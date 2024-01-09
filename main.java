@@ -245,14 +245,18 @@ public class Main {
 
         System.out.println("Enter the adjacency matrix for the graph:");
         try {
-            for (int i = 0; i < V; i++)
-                for (int j = 0; j < V; j++)
+            for (int i = 0; i < V; i++) {
+                System.out.printf("Enter row %d (separate values with spaces): ", i + 1);
+                for (int j = 0; j < V; j++) {
                     graph[i][j] = scanner.nextInt();
+                }
+            }
 
             System.out.print("Enter the source vertex: ");
             int source = scanner.nextInt();
 
             ShortestPath shortestPath = new ShortestPath();
+            shortestPath.V = V; // Set the static variable V in ShortestPath
             shortestPath.dijkstra(graph, source);
         } catch (Exception e) {
             System.out.println("Error: Invalid input. Please check your input.");
